@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>hey pottttti 😌😌❤️ i got something for ya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    body {
+        margin: 0;
+        background: linear-gradient(135deg,#ffd1dc,#ffecf2,#d5c7ff,#cfe8ff);
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+    }
+
+    .center {
+        position:absolute;
+        top:50%; left:50%;
+        transform:translate(-50%, -50%);
+        text-align:center;
+        animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity:0; transform:translate(-50%, -45%); }
+        to { opacity:1; transform:translate(-50%, -50%); }
+    }
+
+    .welcome {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color:#4d2e4e;
+        text-shadow:0 3px 10px rgba(0,0,0,0.15);
+        margin-bottom:20px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        border-radius: 14px;
+        border:none;
+        font-size: 1rem;
+        font-weight:600;
+        background:#fff;
+        box-shadow:0 4px 12px rgba(0,0,0,0.15);
+        cursor:pointer;
+        transition:0.3s;
+    }
+    .btn:hover {
+        transform: scale(1.05);
+    }
+
+    /* LOCK SCREEN */
+    #lockScreen {
+        position:absolute;
+        height:100%; width:100%;
+        top:0; left:0;
+        background: rgba(255,255,255,0.4);
+        backdrop-filter: blur(14px);
+        display:none;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+    }
+
+    .lockBox {
+        background:white;
+        padding:30px;
+        border-radius:20px;
+        width:80%;
+        max-width:350px;
+        box-shadow:0 8px 35px rgba(0,0,0,0.25);
+        text-align:center;
+        animation: popIn .5s ease;
+    }
+
+    @keyframes popIn {
+        from { transform:scale(0.7); opacity:0; }
+        to { transform:scale(1); opacity:1; }
+    }
+
+    .menuPage {
+        display:none;
+        height:100%; width:100%;
+        padding:25px;
+        animation: fadeIn .6s ease forwards;
+    }
+
+    .menuTitle {
+        font-size:1.8rem;
+        font-weight:700;
+        margin-bottom:20px;
+        color:#4d2e4e;
+    }
+
+    .menuItem {
+        background:white;
+        padding:18px;
+        margin:12px 0;
+        border-radius:16px;
+        box-shadow:0 4px 15px rgba(0,0,0,0.15);
+        font-weight:600;
+        color:#333;
+    }
+</style>
+
+</head>
+<body>
+
+<!-- WELCOME SCREEN -->
+<div class="center" id="welcome">
+    <div class="welcome">hey pottttti 😌😌❤️ i got something for ya</div>
+    <button class="btn" onclick="showLock()">Open</button>
+</div>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+    <div class="lockBox">
+        <div style="font-size:1.3rem; font-weight:700; margin-bottom:15px;">Enter Passcode</div>
+        <input id="pass" type="password" placeholder="••••" style="padding:10px; width:80%; border-radius:10px; border:1px solid #ccc; margin-bottom:15px;">
+        <button class="btn" onclick="unlock()">Unlock</button>
+    </div>
+</div>
+
+<!-- MENU PAGE -->
+<div class="menuPage" id="menuPage">
+    <div class="menuTitle">Menu</div>
+
+    <div class="menuItem">🔒 Notes (Locked)</div>
+    <div class="menuItem">🔒 Photos (Locked)</div>
+    <div class="menuItem">🔒 Letters (Locked)</div>
+    <div class="menuItem">🔒 Memories (Locked)</div>
+    <div class="menuItem">🔒 Private Vault (Locked)</div>
+</div>
+
+<script>
+function showLock() {
+    document.getElementById("welcome").style.display = "none";
+    document.getElementById("lockScreen").style.display = "flex";
+}
+
+function unlock() {
+    let box = document.getElementById(".pass").value;
+
+    // fake passcode logic — ANYTHING works, because it's for show
+    document.getElementById("lockScreen").style.display = "none";
+    document.getElementById("menuPage").style.display = "block";
+}
+</script>
+
+</body>
+</html>
