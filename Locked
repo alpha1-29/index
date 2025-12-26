@@ -2,149 +2,426 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>hey pottttti 😌😌❤️ i got something for ya</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Just For You........</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- =========================================================
+     GOOGLE FONTS
+========================================================= -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- =========================================================
+     STYLES
+========================================================= -->
 <style>
-    body {
-        margin: 0;
-        background: linear-gradient(135deg,#ffd1dc,#ffecf2,#d5c7ff,#cfe8ff);
-        font-family: "Poppins", sans-serif;
-        overflow: hidden;
-    }
 
-    .center {
-        position:absolute;
-        top:50%; left:50%;
-        transform:translate(-50%, -50%);
-        text-align:center;
-        animation: fadeIn 1.2s ease forwards;
-    }
+/* =========================================================
+   ROOT DESIGN TOKENS
+========================================================= */
+:root{
+  --midnight:#0b1020;
+  --deep:#070a15;
+  --rose:#cfa3b7;
+  --rose-soft:rgba(207,163,183,0.18);
+  --glass:rgba(255,255,255,0.08);
+  --blur:blur(14px);
+  --text:#f5f6fa;
+  --soft:#b8bdd6;
+}
 
-    @keyframes fadeIn {
-        from { opacity:0; transform:translate(-50%, -45%); }
-        to { opacity:1; transform:translate(-50%, -50%); }
-    }
+/* =========================================================
+   RESET
+========================================================= */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    .welcome {
-        font-size: 2.2rem;
-        font-weight: 700;
-        color:#4d2e4e;
-        text-shadow:0 3px 10px rgba(0,0,0,0.15);
-        margin-bottom:20px;
-    }
+/* =========================================================
+   BODY
+========================================================= */
+body{
+  min-height:100vh;
+  font-family:'Poppins',sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top, #1b2345 0%, var(--midnight) 55%, var(--deep) 100%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  overflow-x:hidden;
+  transition:opacity 1.5s ease;
+}
 
-    .btn {
-        padding: 12px 25px;
-        border-radius: 14px;
-        border:none;
-        font-size: 1rem;
-        font-weight:600;
-        background:#fff;
-        box-shadow:0 4px 12px rgba(0,0,0,0.15);
-        cursor:pointer;
-        transition:0.3s;
-    }
-    .btn:hover {
-        transform: scale(1.05);
-    }
+/* =========================================================
+   CARD CONTAINER
+========================================================= */
+.card{
+  width:100%;
+  max-width:900px;
+  background:var(--glass);
+  backdrop-filter:var(--blur);
+  -webkit-backdrop-filter:var(--blur);
+  border-radius:22px;
+  padding:30px 30px 36px;
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  animation:cardFade 1.4s ease;
+}
 
-    /* LOCK SCREEN */
-    #lockScreen {
-        position:absolute;
-        height:100%; width:100%;
-        top:0; left:0;
-        background: rgba(255,255,255,0.4);
-        backdrop-filter: blur(14px);
-        display:none;
-        justify-content:center;
-        align-items:center;
-        flex-direction:column;
-    }
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+@keyframes cardFade{
+  from{opacity:0; transform:translateY(24px)}
+  to{opacity:1; transform:translateY(0)}
+}
 
-    .lockBox {
-        background:white;
-        padding:30px;
-        border-radius:20px;
-        width:80%;
-        max-width:350px;
-        box-shadow:0 8px 35px rgba(0,0,0,0.25);
-        text-align:center;
-        animation: popIn .5s ease;
-    }
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(18px)}
+  to{opacity:1; transform:translateY(0)}
+}
 
-    @keyframes popIn {
-        from { transform:scale(0.7); opacity:0; }
-        to { transform:scale(1); opacity:1; }
-    }
+@keyframes beat{
+  0%{transform:scale(1)}
+  25%{transform:scale(1.05)}
+  40%{transform:scale(0.98)}
+  60%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
 
-    .menuPage {
-        display:none;
-        height:100%; width:100%;
-        padding:25px;
-        animation: fadeIn .6s ease forwards;
-    }
+/* =========================================================
+   TEXT
+========================================================= */
+h1,h2,h3{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  color:#fff;
+}
 
-    .menuTitle {
-        font-size:1.8rem;
-        font-weight:700;
-        margin-bottom:20px;
-        color:#4d2e4e;
-    }
+h1{font-size:2.2rem;margin-bottom:12px}
+h2{font-size:1.6rem;margin-bottom:14px}
+h3{font-size:1.2rem}
 
-    .menuItem {
-        background:white;
-        padding:18px;
-        margin:12px 0;
-        border-radius:16px;
-        box-shadow:0 4px 15px rgba(0,0,0,0.15);
-        font-weight:600;
-        color:#333;
-    }
+p{
+  color:var(--soft);
+  line-height:1.7;
+}
+
+/* =========================================================
+   COMMON
+========================================================= */
+.center{text-align:center}
+
+.section{
+  display:none;
+  animation:fadeUp .8s ease;
+}
+
+.section.active{display:block}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.btn{
+  background:linear-gradient(135deg,#d4a6ba,#9f7aa6);
+  color:#1a0f18;
+  border:none;
+  padding:14px 30px;
+  font-size:1rem;
+  border-radius:40px;
+  cursor:pointer;
+  font-weight:500;
+  box-shadow:0 12px 30px rgba(0,0,0,.35);
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+}
+
+.btn.locked{
+  opacity:.5;
+  pointer-events:none;
+}
+
+.heartbeat{
+  animation:beat 1.4s infinite;
+}
+
+/* =========================================================
+   QUESTIONS
+========================================================= */
+.question{
+  margin:26px 0 10px;
+  font-size:1.15rem;
+  color:#fff;
+}
+
+.options{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:18px;
+}
+
+@media(max-width:600px){
+  .options{grid-template-columns:1fr}
+}
+
+.option{
+  padding:14px 16px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.15);
+  cursor:pointer;
+  transition:.25s;
+}
+
+.option:hover{
+  background:rgba(255,255,255,0.12);
+}
+
+.option.selected{
+  border-color:var(--rose);
+  background:var(--rose-soft);
+}
+
+/* =========================================================
+   NOTES
+========================================================= */
+.note{
+  margin-top:16px;
+  padding:14px 16px;
+  border-left:3px solid var(--rose);
+  background:rgba(207,163,183,0.08);
+  border-radius:10px;
+  display:none;
+  color:#f3e9ef;
+}
+
+.note.show{display:block}
+
+/* =========================================================
+   NAV
+========================================================= */
+.nav{
+  margin-top:28px;
+  text-align:right;
+}
+
+/* =========================================================
+   TEXTAREAS
+========================================================= */
+textarea{
+  width:100%;
+  min-height:120px;
+  resize:vertical;
+  border-radius:14px;
+  padding:14px;
+  font-family:'Poppins',sans-serif;
+  font-size:.95rem;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.18);
+  color:#fff;
+  outline:none;
+  margin-bottom:22px;
+}
+
+textarea::placeholder{color:#bfc3da}
+
+/* =========================================================
+   TRUTH BOX
+========================================================= */
+.truth-box{
+  margin:36px 0 26px;
+  padding:24px;
+  border-radius:18px;
+  background:linear-gradient(
+    135deg,
+    rgba(207,163,183,0.15),
+    rgba(255,255,255,0.05)
+  );
+  border:1px solid rgba(207,163,183,0.45);
+  box-shadow:inset 0 0 40px rgba(207,163,183,0.12);
+}
+
+.truth-box h3{color:#ffdbe9;margin-bottom:10px}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer{
+  margin-top:26px;
+  font-size:.85rem;
+  color:#9aa0c0;
+  text-align:center;
+}
+
 </style>
-
 </head>
+
 <body>
 
-<!-- WELCOME SCREEN -->
-<div class="center" id="welcome">
-    <div class="welcome">hey pottttti 😌😌❤️ i got something for ya</div>
-    <button class="btn" onclick="showLock()">Open</button>
+<div class="card">
+
+<!-- =========================================================
+   INTRO
+========================================================= -->
+<section class="section active center">
+  <h1>Alfiya.....</h1>
+  <p>
+    This isn’t about proving anything.<br>
+    It’s just me trying to speak calmly, honestly, and gently.<br><br>
+    Please read this with your heart.
+  </p>
+  <br>
+  <button class="btn" onclick="next()">Start</button>
+</section>
+
+<form id="mainForm" action="https://formspree.io/f/xvzooeza" method="POST">
+
+<input type="hidden" name="MCQ1">
+<input type="hidden" name="MCQ2">
+<input type="hidden" name="MCQ3">
+<input type="hidden" name="MCQ4">
+
+<!-- =========================================================
+   MCQ 1 – COMFORT
+========================================================= -->
+<section class="section">
+  <div class="question">Even now, what still feels familiar between us?</div>
+  <div class="options">
+    <div class="option" onclick="pick(1,this,'Calm talks')">The calm talks where we just exist together</div>
+    <div class="option" onclick="pick(1,this,'Understanding')">The way we understand each other without explaining</div>
+    <div class="option" onclick="pick(1,this,'Arguments')">The arguments that still show we care</div>
+    <div class="option" onclick="pick(1,this,'Quiet presence')">The silence when we’re tired but still here</div>
+  </div>
+  <div class="note">That comfort is something I never forgot.</div>
+  <div class="nav"><button type="button" class="btn locked">Next</button></div>
+</section>
+
+<!-- =========================================================
+   MCQ 2 – STAYING
+========================================================= -->
+<section class="section">
+  <div class="question">When misunderstandings happen, what keeps us from giving up?</div>
+  <div class="options">
+    <div class="option" onclick="pick(2,this,'Talking')">Talking things out, even when it’s hard</div>
+    <div class="option" onclick="pick(2,this,'History')">Remembering what we’ve already survived</div>
+    <div class="option" onclick="pick(2,this,'Fear of losing')">The fear of losing each other</div>
+    <div class="option" onclick="pick(2,this,'Choosing us')">Choosing to stay instead of walking away</div>
+  </div>
+  <div class="note">We’ve always come back to each other.</div>
+  <div class="nav"><button type="button" class="btn locked">Next</button></div>
+</section>
+
+<!-- =========================================================
+   MCQ 3 – VULNERABILITY
+========================================================= -->
+<section class="section">
+  <div class="question">What part of me causes the most misunderstandings?</div>
+  <div class="options">
+    <div class="option" onclick="pick(3,this,'Overthinking')">I overthink when I’m scared of losing you</div>
+    <div class="option" onclick="pick(3,this,'Poor expression')">I don’t explain myself properly</div>
+    <div class="option" onclick="pick(3,this,'Emotional reactions')">I react emotionally instead of calmly</div>
+    <div class="option" onclick="pick(3,this,'Silence')">I go silent instead of speaking</div>
+  </div>
+  <div class="note">I’m learning, not running.</div>
+  <div class="nav"><button type="button" class="btn locked">Next</button></div>
+</section>
+
+<!-- =========================================================
+   MCQ 4 – PRESENT
+========================================================= -->
+<section class="section">
+  <div class="question">Right now, what do you feel about us?</div>
+  <div class="options">
+    <div class="option" onclick="pick(4,this,'Hurt but together')">We’re hurt, but still together</div>
+    <div class="option" onclick="pick(4,this,'Fixing slowly')">We’re fixing things slowly</div>
+    <div class="option" onclick="pick(4,this,'Confused')">We’re confused but not done</div>
+    <div class="option" onclick="pick(4,this,'We matter')">We still matter to each other</div>
+  </div>
+  <div class="note">Being here together already means something.</div>
+  <div class="nav"><button type="button" class="btn locked">Next</button></div>
+</section>
+
+<!-- =========================================================
+   WRITTEN
+========================================================= -->
+<section class="section">
+  <h2>From Your Heart</h2>
+
+  <textarea name="hidden_love" placeholder="What part of us still feels worth protecting?"></textarea>
+  <textarea name="my_heart" placeholder="What do you think my heart is trying to say?"></textarea>
+  <textarea name="right_now" placeholder="What do you feel right now?"></textarea>
+
+  <div class="truth-box">
+    <h3>Error 404: Lies Not Found</h3>
+     <p> Alfiya, I am hardcoding my life to you.<br><br> You are the last woman I will ever love.<br> 
+     I am not the guy behind that account, Even if it was me, u would be the first person to know.,<br> 
+     i wont give up on us at any cost. this is for you. im trying hard to make u feel the truth but you dont seem to believe the TRUTH<br>
+     but i want you to know that, I Love You and I will always do ❤️. I dont want you to cry over things that are not real. Please, keep this between us and dont send this link to any of your friends. you told me that one person knows about this and i would not care about who the person is. but please, this is between YOU AND ME.<br><br> 
+     <strong> 3 years and 8 months of us is real.</strong><br>
+      That account is Ghost. Troubles are being caused and pain too!. </p>
+  </div>
+  <div class="center">
+    <button class="btn heartbeat" type="submit">Submit</button>
+  </div>
+</section>
+
+</form>
+
+<section class="section center" id="thanks">
+  <h1>Thank you, Alfiya</h1>
+  <p>This mattered to me.</p>
+</section>
+
+<footer>Keep this between us.</footer>
+
 </div>
 
-<!-- LOCK SCREEN -->
-<div id="lockScreen">
-    <div class="lockBox">
-        <div style="font-size:1.3rem; font-weight:700; margin-bottom:15px;">Enter Passcode</div>
-        <input id="pass" type="password" placeholder="••••" style="padding:10px; width:80%; border-radius:10px; border:1px solid #ccc; margin-bottom:15px;">
-        <button class="btn" onclick="unlock()">Unlock</button>
-    </div>
-</div>
-
-<!-- MENU PAGE -->
-<div class="menuPage" id="menuPage">
-    <div class="menuTitle">Menu</div>
-
-    <div class="menuItem">🔒 Notes (Locked)</div>
-    <div class="menuItem">🔒 Photos (Locked)</div>
-    <div class="menuItem">🔒 Letters (Locked)</div>
-    <div class="menuItem">🔒 Memories (Locked)</div>
-    <div class="menuItem">🔒 Private Vault (Locked)</div>
-</div>
-
+<!-- =========================================================
+   SCRIPT
+========================================================= -->
 <script>
-function showLock() {
-    document.getElementById("welcome").style.display = "none";
-    document.getElementById("lockScreen").style.display = "flex";
+let index=0;
+const sections=document.querySelectorAll('.section');
+
+function next(){
+  sections[index].classList.remove('active');
+  index++;
+  sections[index].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function unlock() {
-    let box = document.getElementById(".pass").value;
+function pick(q,el,val){
+  document.querySelector(`input[name="MCQ${q}"]`).value=val;
+  el.parentElement.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
 
-    // fake passcode logic — ANYTHING works, because it's for show
-    document.getElementById("lockScreen").style.display = "none";
-    document.getElementById("menuPage").style.display = "block";
+  const sec=el.closest('.section');
+  sec.querySelector('.note').classList.add('show');
+  const btn=sec.querySelector('.btn');
+  btn.classList.remove('locked');
+  btn.onclick=next;
 }
+
+document.getElementById('mainForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  sections[index].classList.remove('active');
+  document.getElementById('thanks').classList.add('active');
+
+  fetch(e.target.action,{
+    method:'POST',
+    body:new FormData(e.target),
+    headers:{Accept:'application/json'}
+  });
+
+  setTimeout(()=>{document.body.style.opacity='0'},2500);
+});
 </script>
 
 </body>
